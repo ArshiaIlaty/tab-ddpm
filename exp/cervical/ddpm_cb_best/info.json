@@ -1,0 +1,10 @@
+{
+    "task_type": "binclass",
+    "name": "cervical",
+    "id": "cervical--id",
+    "train_size": 534,
+    "val_size": 134,
+    "test_size": 167,
+    "n_num_features": 35,
+    "n_cat_features": 0
+}

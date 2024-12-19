@@ -129,13 +129,19 @@ def train_simple(
     report['dataset'] = real_data_path
     report['metrics'] = D.calculate_metrics(predictions,  None if D.is_regression else 'probs')
 
-    metrics_report = lib.MetricsReport(report['metrics'], D.task_type)
-    print(model.__class__.__name__)
-    metrics_report.print_metrics()
-    
-    # if parent_dir is not None:
-        # lib.dump_json(report, os.path.join(parent_dir, "results_catboost.json"))
+    try:
+        metrics_report = lib.MetricsReport(report['metrics'], D.task_type)
+        print(model.__class__.__name__)
+        metrics_report.print_metrics()
+        
+        if parent_dir is not None:
+            lib.dump_json(report, os.path.join(parent_dir, "results_simple.json"))
 
-    return metrics_report
+        return metrics_report
 
+    except Exception as e:
+        print(f"Error in train_simple: {str(e)}")
+        # Create a default metrics report in case of error
+        default_metrics = {'val': {}, 'test': {}}
+        return lib.MetricsReport(default_metrics, D.task_type)
     

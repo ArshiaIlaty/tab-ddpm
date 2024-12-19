@@ -1,0 +1,15 @@
+catboost_config = {
+    "learning_rate": 0.026561564197335047,
+    "depth": 3,
+    "l2_leaf_reg": 0.8066571920706246,
+    "bagging_temperature": 0.6363246451815178,
+    "leaf_estimation_iterations": 9,
+    "iterations": 2000,
+    "early_stopping_rounds": 100,  # Increased from 50
+    "od_pval": 0.01,  # Relaxed from 0.001
+    "task_type": "CPU",
+    "thread_count": 4,
+    "cat_features": [],
+    "class_weights": [1, 5],  # Add class weights for imbalance
+    "auto_class_weights": "Balanced"  # Alternative to manual weights
+}
